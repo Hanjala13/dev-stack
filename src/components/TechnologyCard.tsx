@@ -5,7 +5,7 @@ interface ITechnologyCardProps {
     onAddToStack: (technology: ITechnology) => void;
 }
 
-const TechnologyCard = ({technology}: ITechnologyCardProps) => {
+const TechnologyCard = ({technology, onAddToStack}: ITechnologyCardProps) => {
     return (
         <div className="border border-gray-200 rounded-xl p-4">
 
@@ -30,7 +30,7 @@ const TechnologyCard = ({technology}: ITechnologyCardProps) => {
 
             </div>
 
-            <button className="w-full bg-gray-800 text-white py-2 rounded-lg mt-4"> Add to Stack </button>
+            <button onClick={() => onAddToStack(technology)} className="w-full bg-gray-800 text-white py-2 rounded-lg mt-4"> Add to Stack </button>
 
         </div>
     )

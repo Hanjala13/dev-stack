@@ -4,6 +4,7 @@ import Nav from "./components/Nav"
 import TechnologySection from "./components/TechnologySection"
 import type { ITechnology } from "./types/technology"
 
+
 function App() {
   const [selectedTechnologies, setSelectedTechnologies] = useState<ITechnology[]>([])
 
@@ -17,7 +18,7 @@ function App() {
     <>
       <Nav />
       <Banner />
-      <TechnologySection onAddToStack={handleAddToStack} />
+      <TechnologySection onAddToStack={handleAddToStack} selectedTechnologies={selectedTechnologies} />
     </>
   )
 }
