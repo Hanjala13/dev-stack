@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import TechnologyCard from "./TechnologyCard";
 import type { ITechnology } from "../types/technology";
 
-const TechnologySection = () => {
+interface ITechnologySectionProps {
+  onAddToStack: (technology: ITechnology) => void;
+}
+
+const TechnologySection = ({onAddToStack}: ITechnologySectionProps) => {
   const [technologies, setTechnologies] = useState<ITechnology[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -36,7 +40,7 @@ const TechnologySection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
         {technologies.map((technology) => (
-          <TechnologyCard key={technology.id} technology={technology} />
+          <TechnologyCard key={technology.id} technology={technology} onAddToStack={onAddToStack} />
         ))}
       </div>
 

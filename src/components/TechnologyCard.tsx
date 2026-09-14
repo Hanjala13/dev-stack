@@ -2,9 +2,10 @@ import type { ITechnology } from "../types/technology";
 
 interface ITechnologyCardProps {
     technology: ITechnology;
+    onAddToStack: (technology: ITechnology) => void;
 }
 
-const TechnologyCard = ({ technology }: ITechnologyCardProps) => {
+const TechnologyCard = ({technology}: ITechnologyCardProps) => {
     return (
         <div className="border border-gray-200 rounded-xl p-4">
 
