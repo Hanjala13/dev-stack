@@ -31,6 +31,8 @@ const YourStack = ({ selectedTechnologies }: IYourStackProps) => {
                 <p className="text-xs text-gray-500"> {technology.category} </p>
               </div>
 
+              <button className="text-xs text-red-500 border border-gray-200 rounded-md px-2 py-1 hover:bg-red-50">Remove</button>
+
             </div>
           ))}
 
