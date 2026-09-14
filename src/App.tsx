@@ -1,5 +1,6 @@
-import Banner from "./assets/components/Banner"
-import Nav from "./assets/components/Nav"
+import Banner from "./components/Banner"
+import Nav from "./components/Nav"
+import TechnologySection from "./components/TechnologySection"
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <Nav />
       <Banner />
+      <TechnologySection />
     </>
   )
 }
