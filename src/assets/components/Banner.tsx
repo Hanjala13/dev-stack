@@ -33,7 +33,7 @@ const Banner = () => {
                 </div>
 
                 <div className="flex justify-center">
-                    <img src={banner} alt="Development Stack" className="w-95" />
+                    <img src={banner} alt="Development Stack" className="w-95"/>
                 </div>
 
             </div>
