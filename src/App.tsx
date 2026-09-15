@@ -4,6 +4,7 @@ import Nav from "./components/Nav"
 import TechnologySection from "./components/TechnologySection"
 import { toast, ToastContainer } from "react-toastify"
 import type { ITechnology } from "./types/technology"
+import Footer from "./components/Footer"
 
 function App() {
   const [selectedTechnologies, setSelectedTechnologies] = useState<ITechnology[]>([])
@@ -54,6 +55,7 @@ function App() {
         handleRemoveFromStack={handleRemoveFromStack}
         handleRemoveAll={handleRemoveAll}
       />
+      <Footer />
     </>
   )
 }
