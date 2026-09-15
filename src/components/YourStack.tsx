@@ -2,14 +2,16 @@ import type { ITechnology } from "../types/technology";
 
 interface IYourStackProps {
   selectedTechnologies: ITechnology[];
+  handleRemoveFromStack: (technologyId: string) => void;
+  handleRemoveAll: () => void;
 }
 
-const YourStack = ({ selectedTechnologies }: IYourStackProps) => {
+const YourStack = ({ selectedTechnologies, handleRemoveFromStack, handleRemoveAll }: IYourStackProps) => {
   return (
     <aside className="border border-gray-200 rounded-xl p-5">
 
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-bold"> Your Stack </h2>
+        <h2 className="text-xl font-bold">Your Stack</h2>
         <span className="text-sm text-gray-500"> {selectedTechnologies.length} Technology Selected </span>
       </div>
 
@@ -31,10 +33,17 @@ const YourStack = ({ selectedTechnologies }: IYourStackProps) => {
                 <p className="text-xs text-gray-500"> {technology.category} </p>
               </div>
 
-              <button className="text-xs text-red-500 border border-gray-200 rounded-md px-2 py-1 hover:bg-red-50">Remove</button>
+              <button onClick={() => handleRemoveFromStack(technology.id)} className="text-xs text-red-500 border border-gray-200 rounded-md px-2 py-1 hover:bg-red-50">Remove</button>
 
             </div>
           ))}
+
+          {selectedTechnologies.length > 0 && (
+            <button onClick={handleRemoveAll}
+              className="w-full mt-5 py-2 rounded-lg border border-red-200 text-red-500 hover:bg-red-50">
+              Remove All
+            </button>
+          )}
 
         </div>
       )}

@@ -6,9 +6,16 @@ import type { ITechnology } from "../types/technology";
 interface ITechnologySectionProps {
   onAddToStack: (technology: ITechnology) => void;
   selectedTechnologies: ITechnology[];
+  handleRemoveFromStack: (technologyId: string) => void;
+  handleRemoveAll: () => void;
 }
 
-const TechnologySection = ({ onAddToStack, selectedTechnologies }: ITechnologySectionProps) => {
+const TechnologySection = ({
+  onAddToStack,
+  selectedTechnologies,
+  handleRemoveFromStack,
+  handleRemoveAll,
+}: ITechnologySectionProps) => {
   const [technologies, setTechnologies] = useState<ITechnology[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +26,7 @@ const TechnologySection = ({ onAddToStack, selectedTechnologies }: ITechnologySe
 
       setTechnologies(data);
       setLoading(false);
-    }
+    };
 
     fetchTechnologies();
   }, []);
@@ -29,31 +36,30 @@ const TechnologySection = ({ onAddToStack, selectedTechnologies }: ITechnologySe
       <div className="text-center py-20">
         <p>Loading technologies...</p>
       </div>
-    )
+    );
   }
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-16">
 
       <div>
-        <h2 className="text-3xl font-bold"> Explore the Technologies </h2>
-        <p className="text-gray-500 mt-2"> Pick one technology per category to build your ideal stack. </p>
+        <h2 className="text-3xl font-bold">Explore the Technologies</h2>
+        <p className="text-gray-500 mt-2">Pick one technology per category to build your ideal stack.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-8">
 
         <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {technologies.map((technology) => (
-            <TechnologyCard key={technology.id} technology={technology} onAddToStack={onAddToStack} />
+            <TechnologyCard key={technology.id} technology={technology} onAddToStack={onAddToStack} selectedTechnologies={selectedTechnologies} />
           ))}
         </div>
 
-        <YourStack selectedTechnologies={selectedTechnologies} />
+        <YourStack selectedTechnologies={selectedTechnologies} handleRemoveFromStack={handleRemoveFromStack} handleRemoveAll = {handleRemoveAll} />
 
       </div>
-
     </section>
-  )
-}
+  );
+};
 
 export default TechnologySection;
